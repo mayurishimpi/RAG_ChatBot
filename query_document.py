@@ -31,14 +31,14 @@ def load_retriever():
 
 
 def qa_chain():
-    llm = ChatOpenAI(model_name="gpt-4", temperature=0.3)
+    llm = ChatOpenAI(model_name="gpt-4", temperature=0)
 
     # Loading the retriever for question-answering
     retriever = load_retriever()
 
     # Initializing a ConversationBufferMemory for storing conversation history
     memory = ConversationBufferMemory(
-        memory_key="chat_history", return_messages=False) 
+        memory_key="chat_history", return_messages=True) 
     
     # Creating a ConversationalRetrievalChain model from language model, retriever, and memory
     model = ConversationalRetrievalChain.from_llm(
