@@ -1,0 +1,8 @@
+faiss-cpu
+rich
+gradio
+langchain
+openai
+unstructured
+evaluate
+
