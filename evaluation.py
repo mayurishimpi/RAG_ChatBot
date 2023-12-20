@@ -1,8 +1,8 @@
 import evaluate
 
 if __name__ == "__main__":
+    
     # Predictions taken from responses geenrated by the model
-
     prediction= [""""The Nightingale" by Kristin Hannah is a powerful exploration of human resilience. 
                  The main characters, Vianne and Isabelle, are forced to make difficult choices to protect their family during the Nazi occupation of France in World War II. 
                  Despite the harsh circumstances, they demonstrate an incredible capacity for endurance and courage. 

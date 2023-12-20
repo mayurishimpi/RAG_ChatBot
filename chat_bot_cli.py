@@ -6,7 +6,7 @@ BOLD = "\033[1m"
 RESET = "\033[0m"
 
 @click.command()
-@click.option('--question', prompt='Your Question', default="who is the author of the novel?", help='The question you want to ask.')
+@click.option('--question', prompt='Your Question', default="Who is the author of these novels?", help='The question you want to ask.')
 def main(question):
     # Initialize the QA chain
     chain = qa_chain()
@@ -34,7 +34,7 @@ def main(question):
 
 
         # Prompting the user for a new question
-        question = click.prompt('\nYour Question', default="Who is the author of the novel?")
+        question = click.prompt('\nYour Question', default="Who is the author of these novels?")
 
 if __name__ == '__main__':
     main()

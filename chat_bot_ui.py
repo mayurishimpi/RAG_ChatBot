@@ -31,46 +31,44 @@ class ChatWrapper:
 
 # Graphical user interface using Gradio: creates easy-to-use, customizable UI components for ML models
 chat = ChatWrapper()
-theme = gr.themes.Default(primary_hue="blue").set(
-    button_large_padding="32px",
+theme = gr.themes.Default(primary_hue="blue", secondary_hue="orange").set(
     body_background_fill = "*primary_100",
-    button_primary_background_fill="white",
-    button_primary_background_fill_hover="*primary_300",
+    button_primary_background_fill="*primary_3",
+    button_primary_background_fill_hover="orange",
+
 )
 
-block = gr.Blocks(theme= theme)
-
-with block:
+with gr.Blocks(theme=theme) as demo:
 
     # Creating a row with a Markdown title
     with gr.Row():
         gr.Markdown(
-            "<h2><center>Learn more about Kristin Hannah's 'The Nightingale'</center></h2>")
+            "<h3><center>Learn more about Kristin Hannah's Best Selling novels!</center></h3>")
 
 
     # Initializing a Gradio Chatbot component
-    chatbot = gr.Chatbot()
+    chatbot = gr.Chatbot( )
 
     # Creating another row with a Textbox for user input and a Submit button
     with gr.Row():
         message = gr.Textbox(
             label="What's your question?",
-            placeholder="Ask questions about the novels by Kristin Hannah!",
+            placeholder="Type a message.....",
             lines=1,
+            scale = 4
         )
-        submit = gr.Button(value="Send", variant="secondary")
+        submit = gr.Button(value="Send",size = "sm",  scale = 1)
 
     # Providing examples for user convenience
     gr.Examples(
         examples=[
-            "Who is the author of 'The Nightingale'?",
-            "What are the characters in this novel like?",
+            "Who is the author of these novels?",
+            "Compare the themes of the two novels",
             "Why should I read this novel?",
+
         ],
         inputs=message,
     )
-
-    gr.HTML("Custom Chat-GPT like Chatbot.")
 
 
     state = gr.State()
@@ -80,4 +78,4 @@ with block:
     message.submit(chat, inputs=[message, state], outputs=[chatbot, state])
 
 
-block.launch(debug=True)
+demo.launch(debug=True)

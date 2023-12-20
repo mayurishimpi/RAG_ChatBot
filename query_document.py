@@ -7,7 +7,7 @@ from langchain.embeddings import OpenAIEmbeddings
 from langchain.vectorstores.faiss import FAISS
 
 
-template = """You are an AI assistant for answering questions about Kristin Hannah's bestselling novel, "The Nightingale". 
+template = """You are an AI assistant for answering questions about Kristin Hannah's bestselling novels, "The Great Alone" and "The Nightingale". 
 Provide concise and direct answers to the questions.
 Question: {question}
 =========
