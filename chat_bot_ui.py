@@ -29,16 +29,16 @@ class ChatWrapper:
         return history, history
 
 
-# Graphical user interface using Gradio: creates easy-to-use, customizable UI components for ML models
+# Graphical user interface using Gradio
 chat = ChatWrapper()
-theme = gr.themes.Default(primary_hue="blue", secondary_hue="orange").set(
-    body_background_fill = "*primary_100",
-    button_primary_background_fill="*primary_3",
-    button_primary_background_fill_hover="orange",
+theme = gr.themes.Default(primary_hue = "slate", secondary_hue= "violet").set(body_background_fill = "#ede8f7")
 
-)
+css = """
+.submit { background-color : "white" !important; font-size: 20px !important;   border: 1px solid #a075fc !important;  }
+.textbox {font-size: 20px !important ; border: 1px solid #a075fc !important; }
+.chatbot_row: {border: 1px solid #a075fc !important; }"""
 
-with gr.Blocks(theme=theme) as demo:
+with gr.Blocks(theme = theme, css = css , elem_classes="block") as demo:
 
     # Creating a row with a Markdown title
     with gr.Row():
@@ -47,17 +47,19 @@ with gr.Blocks(theme=theme) as demo:
 
 
     # Initializing a Gradio Chatbot component
-    chatbot = gr.Chatbot( )
+    with gr.Row(elem_classes="chatbot_row" ):
+        chatbot = gr.Chatbot( elem_classes="chatbot")
 
     # Creating another row with a Textbox for user input and a Submit button
     with gr.Row():
         message = gr.Textbox(
-            label="What's your question?",
+            label="Ask Away!",
             placeholder="Type a message.....",
             lines=1,
-            scale = 4
+            scale = 5,
+            elem_classes="textbox"
         )
-        submit = gr.Button(value="Send",size = "sm",  scale = 1)
+        submit = gr.Button(value="Send",size = "sm",  scale = 1, elem_classes="submit")
 
     # Providing examples for user convenience
     gr.Examples(
